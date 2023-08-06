@@ -14,18 +14,28 @@
       - name: Teste de acesso
         ansible.builtin.shell: |
           set timeout 5
-          set prompt ".*\[>#:$%\] \?\$"
-
           spawn ssh root@{{ item }}
 
-          expect "yes/no" { send "yes\r"
-	        expect "*?assword" { send "VMware1!\r" }
-          }"*?assword" { send "VMware1\r" }
+          }
+          expect 
+          "yes/no" { 
+              send "yes\r"
+              exp_continue
+          }
           
-                            
-          expect "# " { send "ls -ltr\r" }"
+          expect 
+          "*?assword" { 
+                send -- "VMware1!\r"
+                exp_continue
+          }
+                                      
+          expect 
+          "$promt" {
+              send "ls -ltr\r"
 
           exit 0
+          }
+          
         args:
           executable: /usr/bin/expect
         #delegate_to: localhost
