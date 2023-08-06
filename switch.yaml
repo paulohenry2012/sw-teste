@@ -21,9 +21,8 @@
           expect "*?erprint:*"
           send -- "yes\n"
 
-          expect "password:" 
-          send -- "VMware1!\n"
-
+          expect "password:" "VMware1!\n"
+          
           expect -re ${prompt} {send -- "df -lh\n"}
           
           expect "\n root"
