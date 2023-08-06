@@ -20,7 +20,7 @@
           send "yes\n"
 
           expect "*?assword:*"
-          send " VMware1!\n"
+          send "VMware1!\n"
 
           expect "\n root"
           send "df -lh\n"
