@@ -14,17 +14,19 @@
       - name: Teste de acesso
         ansible.builtin.shell: |
           set timeout 5
+          set prompt ".*\[>#:$%\] \?\$"
+          set password_prompt ".*: \?\$"
+
+          
           spawn ssh root@{{ item }}
 
           expect "*?erprint:*"
           send "yes\n"
 
-          expect "password: "
-          send "VMware1!\r"
-
-          expect "\n root"
-          send "df -lh\r"
-
+          expect -re ${password_prompt} {send -- "VMware1!\n"}
+          
+          expect -re ${prompt} {send -- "df -lh\n"}
+          
           exit 0
         args:
           executable: /usr/bin/expect
