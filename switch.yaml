@@ -17,7 +17,7 @@
           spawn ssh root@{{ item }}
       
           expect 
-          "*?assword" { 
+          "password:" { 
                 send -- "VMware1!\r"
                 exp_continue
           }
