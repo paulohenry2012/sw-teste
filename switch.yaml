@@ -16,10 +16,7 @@
           set timeout 5
           spawn ssh root@{{ item }}
       
-          expect {
-                  -ex "(yes/no)?" {send "yes\n"; exp_continue}
-                  "password:"     {send "VMware1!\n"; exp_continue}
-                  -ex "#"
+          expect "password:" {send "VMware1!\r"}
                                       
           expect 
           "$promt" {
