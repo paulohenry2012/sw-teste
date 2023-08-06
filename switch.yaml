@@ -20,10 +20,10 @@
           send "yes\n"
 
           expect "password: "
-          send "VMware1!\n"
+          send "VMware1!\r"
 
           expect "\n root"
-          send "df -lh\n"
+          send "df -lh\r"
 
           exit 0
         args:
