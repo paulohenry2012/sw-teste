@@ -16,7 +16,6 @@
           set timeout 5
           spawn ssh root@{{ item }}
 
-          }
           expect 
           "yes/no" { 
               send "yes\r"
@@ -34,8 +33,7 @@
               send "ls -ltr\r"
 
           exit 0
-          }
-          
+
         args:
           executable: /usr/bin/expect
         #delegate_to: localhost
