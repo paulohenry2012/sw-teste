@@ -19,7 +19,7 @@
           expect "*?erprint:*"
           send "yes\n"
 
-          expect "password"
+          expect "password: "
           send "VMware1!\n"
 
           expect "\n root"
