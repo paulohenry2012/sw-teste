@@ -6,6 +6,11 @@
 
   tasks:
 
+      - name: install pexpect
+        pip:
+          name: pexpect
+        become: yes
+      
       - name: Teste de acesso
         ansible.builtin.shell: |
           set timeout 300
