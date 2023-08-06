@@ -18,8 +18,7 @@
       
           expect {
                   -ex "(yes/no)?" {send "yes\n"; exp_continue}
-                  "Password:"     {send "VMware1!\n"; exp_continue}
-                  timeout         {send_user "connection fail\n"; exit}
+                  "password:"     {send "VMware1!\n"; exp_continue}
                   -ex "#"
                                       
           expect 
