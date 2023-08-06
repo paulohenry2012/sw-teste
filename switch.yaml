@@ -31,5 +31,5 @@
 
       - name: "Resultado telnet"
         ansible.builtin.debug:
-            msg: "{{ connection_out.results[0] }}"
+            msg: "{{ connection_out.results }}"
         #run_once: true  
