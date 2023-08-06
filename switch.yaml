@@ -19,9 +19,10 @@
           spawn ssh root@{{ item }}
 
           expect "*?erprint:*"
-          send "yes\n"
+          send -- "yes\n"
 
-          expect "password:" send "VMware1!\n"
+          expect "password:" 
+          send -- "VMware1!\n"
 
           expect -re ${prompt} {send -- "df -lh\n"}
           
