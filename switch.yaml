@@ -15,13 +15,7 @@
         ansible.builtin.shell: |
           set timeout 5
           spawn ssh root@{{ item }}
-
-          expect 
-          "yes/no" { 
-              send "yes\r"
-              exp_continue
-          }
-          
+      
           expect 
           "*?assword" { 
                 send -- "VMware1!\r"
