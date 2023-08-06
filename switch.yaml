@@ -17,7 +17,7 @@
           spawn ssh root@{{ item }}
 
           expect "*?erprint:*"
-          send " yes\n"
+          send "yes\n"
 
           expect "*?assword:*"
           send " VMware1!\n"
