@@ -18,9 +18,7 @@
       
           expect "password:" {send "VMware1!\r"}
                                       
-          expect 
-          "$promt" {
-              send "ls -ltr\r"
+          expect "#" {send "df -lh\r"}
 
           exit 0
 
