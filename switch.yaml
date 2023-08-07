@@ -26,6 +26,8 @@
 
           sens -- "exit\r"
 
+          expect eof
+
         args:
           executable: /usr/bin/expect
         #delegate_to: localhost
