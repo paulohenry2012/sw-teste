@@ -18,10 +18,8 @@
       
           expect "password:" {send "VMware1!\r"}
 
-          interact
-
-          expect "root@{{ item }} ~]#" 
-          send "df -lh\n"
+          expect "~]#" 
+          send "df -lh\r"
 
           exit 0
 
