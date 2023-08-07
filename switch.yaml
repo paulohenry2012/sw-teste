@@ -13,7 +13,7 @@
       
       - name: Teste de acesso
         ansible.builtin.shell: |
-          set timeout 30
+          set timeout -1
           spawn ssh root@{{ item }}
       
           expect "password:" {send "VMware1!\r"}
