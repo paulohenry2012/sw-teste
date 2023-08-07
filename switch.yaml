@@ -17,7 +17,9 @@
           spawn ssh root@{{ item }}
       
           expect "password:" {send "VMware1!\r"}
-                                      
+
+          interact
+
           expect "root@{{ item }} ~]#" 
           send "df -lh\n"
 
