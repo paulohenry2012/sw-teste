@@ -18,13 +18,13 @@
       
           expect "password:" {send "VMware1!\r"}
 
-          sleep 10
+          sleep 5
           
           send -- "df -lh\r"
 
           sleep 10
 
-          sens -- "exit\r"
+          send -- "exit\r"
 
           expect eof
 
