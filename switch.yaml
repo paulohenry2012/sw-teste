@@ -43,7 +43,7 @@
 
           sleep 5
           
-          send -- "curl {{groups_var['host02'].port}}\r"
+          send -- "curl {{groups_var['host02']}}\r"
 
           sleep 10
 
