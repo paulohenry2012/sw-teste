@@ -38,12 +38,12 @@
         ansible.builtin.shell: |
           set timeout -1
           spawn ssh root@{{ item }}
-      
-          expect "password:" {send "VMware1!\r"}
+          sleep 5
+          send "VMware1!\r"
 
           sleep 5
           
-          send -- "lsblk\r"
+          send -- "curl {{groups_var['host02'].port}}\r"
 
           sleep 10
 
