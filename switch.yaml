@@ -13,12 +13,13 @@
       
       - name: Teste de acesso
         ansible.builtin.shell: |
-          set timeout 15
+          set timeout 30
           spawn ssh root@{{ item }}
       
           expect "password:" {send "VMware1!\r"}
                                       
-          expect "~]#" {send "df -lh\r"}
+          expect "~]#" 
+          send "df -lh\n"
 
           exit 0
 
@@ -31,5 +32,5 @@
 
       - name: "Resultado telnet"
         ansible.builtin.debug:
-            msg: "{{ connection_out.results }}"
+            msg: "{{ connection_out }}"
         #run_once: true  
