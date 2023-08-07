@@ -18,7 +18,7 @@
       
           expect "password:" {send "VMware1!\r"}
 
-          expect "[root@{{ item }} ~]#" {send "df -lh\r"}
+          expect "root@{{ item }} ~" {send "df -lh\r"}
 
           exit 0
 
