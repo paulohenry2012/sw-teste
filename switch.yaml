@@ -25,7 +25,7 @@
 
           sleep 2
 
-          send -- "curl localhost:{{hostvars[item].ansible_port([0-9][0-9])}}\r"
+          send -- "curl localhost:{{hostvars[item].ansible_port2}}\r"
           
           sleep 2
           
@@ -42,7 +42,8 @@
 
       - name: "Resultado telnet"
         ansible.builtin.debug:
-            msg: 
-              - "{{ connection_out }}"
+            msg: "{{ connection_out }}"
+        with_items: "{{ connection_out.results }}"  
+        when: "{{ connection_out.stdout == 'root'}}"
             #  - "{{ connection_out2 }}"
         #run_once: true  
