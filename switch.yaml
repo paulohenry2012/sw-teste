@@ -20,7 +20,7 @@
 
           sleep 5
           
-          send -- "curl "{{ hostvars[host02].['port([0-9])'] }}"\r"
+          send -- "curl "{{ hostvars[host02].['port([0-9][0-9])'] }}"\r"
 
           sleep 10
 
