@@ -14,7 +14,7 @@
       - name: Teste de acesso
         ansible.builtin.shell: |
           set timeout -1
-          spawn ssh root@{{ acesso }}
+          spawn ssh root@rhel-02
           sleep 5
           send -- "VMware1!\r"
 
