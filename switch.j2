@@ -1,3 +1,3 @@
 {% for pr in connection_out.results %}
-{{ pr.item  }};{{ pr.stdout_lines | regex_search('teste.*', multiline=True, ignorecase=True) }}
+{{ pr.item  }};{{ pr.stdout_lines | regex_search('teste', multiline=True, ignorecase=True) }}
 {% endfor %}
