@@ -2,10 +2,7 @@
 - name: "Teste de comandos shell"
   hosts: "{{groups['srv01']}}"
   gather_facts: no
-  vars: 
-    port: "{{hostvars[item].ansible_port}}"
-
-
+  
   tasks:
 
       - name: install pexpect
@@ -33,7 +30,7 @@
         args:
           executable: /usr/bin/expect
         #delegate_to: localhost
-        loop: "{{groups['host02'] | hostvars[item].ansible_port | list }}" 
+        loop: "{{groups['host02'] | hostvars['host02'].ansible_port | list }}" 
         register: connection_out
 
       - name: "Consolidando Resultado"
