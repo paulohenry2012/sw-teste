@@ -19,7 +19,7 @@
 
           sleep 5
           
-          send -- "curl localhost:"{{hostvars[item].ansible_port | list }}"\r"
+          send -- "curl localhost:{{hostvars[item].ansible_port | list }}\r"
 
           sleep 2
          
@@ -30,7 +30,7 @@
         args:
           executable: /usr/bin/expect
         #delegate_to: localhost
-        loop: "{{groups['host02']}}" 
+        loop: "{{groups['host01']}}" 
         register: connection_out
 
       - name: "Consolidando Resultado"
