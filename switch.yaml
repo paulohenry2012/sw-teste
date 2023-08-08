@@ -17,7 +17,7 @@
           set timeout -1
           spawn ssh root@{{ item }}
           sleep 5
-          send "VMware1!\r"
+          send -- "VMware1!\r"
 
           sleep 5
           
