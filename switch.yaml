@@ -2,10 +2,7 @@
 - name: "Teste de comandos shell"
   hosts: "{{groups['srv01']}}"
   gather_facts: no
-  vars:
-    defaults:
-      - "{{groups['host02']}}"
-      
+  vars: 
     rules:
       - "{{hostvars[item].ansible_port}}"
 
@@ -26,7 +23,7 @@
 
           sleep 5
           
-          send -- "curl localhost:{{ item.1 }}\r"
+          send -- "curl localhost:{{ item.0 }}\r"
 
           sleep 2
          
