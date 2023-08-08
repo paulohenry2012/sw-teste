@@ -20,7 +20,7 @@
 
           sleep 2
           
-          send -- "curl localhost:{{ item }\r"
+          send -- "curl localhost:{{ item }}\r"
 
           sleep 2
          
