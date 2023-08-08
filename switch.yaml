@@ -36,9 +36,6 @@
 
         args:
           executable: /usr/bin/expect
-        with_nested:
-          - "{{groups['host02']}}"
-          - "{{hostvars[item].ansible_port}}"
         #delegate_to: localhost
         loop: "{{groups['host02']}}"
         register: connection_out
