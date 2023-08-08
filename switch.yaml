@@ -3,6 +3,11 @@
   hosts: "{{groups['srv01']}}"
   gather_facts: no
   vars:
+    defaults:
+      - "{{groups['host02']}}"
+      
+    rules:
+      - "{{hostvars[item.0].ansible_port}}"
 
 
   tasks:
@@ -21,7 +26,7 @@
 
           sleep 5
           
-          send -- "curl localhost:{{hostvars[item.0].[item.1]}}\r"
+          send -- "curl localhost:{{hostvars[item].[item.1]}}\r"
 
           sleep 2
          
@@ -33,7 +38,7 @@
           executable: /usr/bin/expect
         with_nested:
           - "{{groups['host02']}}"
-          - "{{hostvars[item].ansible_port}}"
+          - "{{hostvars[item.0].ansible_port}}"
         #delegate_to: localhost
         #loop: "{{groups['host02']}}"
         register: connection_out
