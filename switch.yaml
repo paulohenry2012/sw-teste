@@ -43,7 +43,7 @@
       
       - name: debug
         debug:
-          msg: "{{ connection_out.stdout | regex_search('.*teste.*', multiline=True, ignorecase=True) }}"
+          msg: "{{ item.stdout | regex_search('.*teste.*', multiline=True, ignorecase=True) }}"
         loop: "{{ connection_out.results }}"
       #- name: "Resultado telnet"
       #  ansible.builtin.debug:
