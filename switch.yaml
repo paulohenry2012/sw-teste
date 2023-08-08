@@ -25,7 +25,7 @@
 
           sleep 2
 
-          send -- "curl localhost:{{hostvars[item].ansible_port2}}\r"
+          send -- "curl localhost:{{hostvars[item].ansible_port([0-9][0-9])}}\r"
           
           sleep 2
           
