@@ -13,13 +13,13 @@
       - name: Teste de acesso
         ansible.builtin.shell: |
           set timeout -1
-          spawn ssh root@{{ item.0 }}
+          spawn ssh root@{{ item }}
           sleep 5
           send -- "VMware1!\r"
 
           sleep 5
           
-          send -- "curl localhost:{{ item.1 }}\r"
+          send -- "curl localhost:"{{hostvars[item].ansible_port | list }}"\r"
 
           sleep 2
          
@@ -30,7 +30,7 @@
         args:
           executable: /usr/bin/expect
         #delegate_to: localhost
-        loop: "{{'groups[host02]' | 'hostvars[host02].ansible_port' | list }}" 
+        loop: "{{groups['host02']}}" 
         register: connection_out
 
       - name: "Consolidando Resultado"
