@@ -39,13 +39,11 @@
         loop: "{{groups['host02']}}"
         register: connection_out
 
-      - name: Get the file_path
-        set_fact:
-          file_path: "{{ connection_out.stdout_lines | regex_search('.*Teste.*', ignorecase=True) }}"
+      
       
       - name: debug
         debug:
-          msg: "{{ file_path }}"
+          msg: "{{ connection_out.stdout_lines | regex_search('.*Teste.*', ignorecase=True) }}"
       
       #- name: "Resultado telnet"
       #  ansible.builtin.debug:
