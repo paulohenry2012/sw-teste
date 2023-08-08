@@ -19,7 +19,7 @@
 
           sleep 5
           
-          send -- "curl localhost:{{hostvars[item].ansible_port | list }}\r"
+          send -- "curl localhost:{{hostvars['item'].ansible_port | list }}\r"
 
           sleep 2
          
@@ -32,6 +32,8 @@
         #delegate_to: localhost
         loop: "{{groups['host01']}}" 
         register: connection_out
+        run_once: true
+
 
       - name: "Consolidando Resultado"
         ansible.builtin.template:
