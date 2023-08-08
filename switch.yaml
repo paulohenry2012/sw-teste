@@ -30,7 +30,7 @@
         args:
           executable: /usr/bin/expect
         #delegate_to: localhost
-        loop: "{{groups[host02] | hostvars[host02].ansible_port | list }}" 
+        loop: "{{'groups[host02]' | 'hostvars[host02].ansible_port' | list }}" 
         register: connection_out
 
       - name: "Consolidando Resultado"
