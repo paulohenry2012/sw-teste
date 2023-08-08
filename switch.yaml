@@ -33,7 +33,7 @@
         #delegate_to: localhost
         loop: "{{groups['port01']}}" 
         register: connection_out
-        run_once: true
+        #run_once: true
 
 
       - name: "Consolidando Resultado"
