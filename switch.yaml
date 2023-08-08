@@ -41,7 +41,7 @@
 
       - name: Get the file_path
         set_fact:
-          file_path: "{{ connection_out.stdout_lines | select('match', 'Teste .+') | list | regex_replace( '^.*Teste (.*)', '\\1') }}"
+          file_path: "{{ connection_out.stdout_lines | regex_search('.*Teste.*', ignorecase=True) }}"
       
       - name: debug
         debug:
