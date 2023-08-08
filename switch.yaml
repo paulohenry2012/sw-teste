@@ -48,7 +48,7 @@
       - name: "Resultado telnet"
         ansible.builtin.debug:
             msg: "{{ connection_out.results }}"
-
+        run_once: true
 
       #  with_items: "{{ connection_out.results }}"  
       #  when: "{{ connection_out.stdout == 'root'}}"
