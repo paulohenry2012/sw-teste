@@ -19,7 +19,7 @@
 
           sleep 2
           
-          send -- "curl localhost:80\r"
+          send -- "curl localhost:{{ item }\r"
 
           sleep 2
          
@@ -30,7 +30,7 @@
         args:
           executable: /usr/bin/expect
         #delegate_to: localhost
-        #loop: "{{groups['host01']}}" 
+        loop: "{{groups['port01']}}" 
         register: connection_out
         run_once: true
 
