@@ -23,8 +23,12 @@
           
           send -- "curl localhost:{{hostvars[item].ansible_port}}\r"
 
-          sleep 10
+          sleep 2
 
+          send -- "curl localhost:{{hostvars[item].ansible_port2}}\r"
+          
+          sleep 2
+          
           send -- "exit\r"
 
           expect eof
