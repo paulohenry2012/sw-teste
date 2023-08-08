@@ -39,11 +39,18 @@
         loop: "{{groups['host02']}}"
         register: connection_out
 
-
-      - name: "Resultado telnet"
-        ansible.builtin.debug:
-            msg: "{{ connection_out }}"
-        with_items: "{{ connection_out.results }}"  
-        when: "{{ connection_out.stdout == 'root'}}"
+      - name: Get the file_path
+        set_fact:
+          file_path: "{{ connection_out.stdout_lines | select('match', 'Teste {{ item }}.+') | list | regex_replace( '^.*Teste {{ item }} (.*) \\. Please .*$', '\\1') }}"
+      
+      - name: debug
+        debug:
+          msg: "{{ file_path }}"
+      
+      #- name: "Resultado telnet"
+      #  ansible.builtin.debug:
+      #      msg: "{{ connection_out }}"
+      #  with_items: "{{ connection_out.results }}"  
+      #  when: "{{ connection_out.stdout == 'root'}}"
             #  - "{{ connection_out2 }}"
         #run_once: true  
