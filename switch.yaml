@@ -2,6 +2,7 @@
 - name: "Teste de comandos shell"
   hosts: "{{groups['srv01']}}"
   gather_facts: no
+  vars:
 
 
   tasks:
@@ -20,7 +21,7 @@
 
           sleep 5
           
-          send -- "curl "{{ hostvars[{{ item }}].['port01'] }}"\r"
+          send -- "curl localhost:"{{ hostvars[{{ item }}].['port01'] }}"\r"
 
           sleep 10
 
