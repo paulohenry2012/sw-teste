@@ -15,12 +15,12 @@
         ansible.builtin.shell: |
           set timeout -1
           spawn ssh root@{{ item }}
-      
-          expect "password:" {send "VMware1!\r"}
+          sleep 5
+          send "VMware1!\r"
 
           sleep 5
           
-          send -- "df -lh\r"
+          send -- "curl "{{ hostvars[host02].['port([0-9])'] }}"\r"
 
           sleep 10
 
@@ -34,33 +34,10 @@
         loop: "{{groups['host02']}}"
         register: connection_out
 
-      - name: Teste de acesso
-        ansible.builtin.shell: |
-          set timeout -1
-          spawn ssh root@{{ item }}
-          sleep 5
-          send "VMware1!\r"
-
-          sleep 5
-          
-          send -- "curl {{groups_var['host02']}}\r"
-
-          sleep 10
-
-          send -- "exit\r"
-
-          expect eof
-
-        args:
-          executable: /usr/bin/expect
-        #delegate_to: localhost
-        loop: "{{groups['host02']}}"
-        register: connection_out2
-
 
       - name: "Resultado telnet"
         ansible.builtin.debug:
             msg: 
               - "{{ connection_out }}"
-              - "{{ connection_out2 }}"
+            #  - "{{ connection_out2 }}"
         #run_once: true  
