@@ -3,8 +3,7 @@
   hosts: "{{groups['srv01']}}"
   gather_facts: no
   vars:
-    acesso: 
-      - {{groups['host01']}}
+    with_items: "{{groups['host01']}}"
   tasks:
 
       - name: install pexpect
@@ -15,7 +14,7 @@
       - name: Teste de acesso
         ansible.builtin.shell: |
           set timeout -1
-          spawn ssh root@{{ acesso }}
+          spawn ssh root@{{ item.0 }}
           sleep 5
           send -- "VMware1!\r"
 
