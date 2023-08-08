@@ -39,15 +39,17 @@
         loop: "{{groups['host02']}}"
         register: connection_out
 
-      
-      
-      - name: debug
-        debug:
-          msg: "{{ item.stdout | regex_search('.*teste.*', multiline=True, ignorecase=True) }}"
-        loop: "{{ connection_out.results }}"
-      #- name: "Resultado telnet"
-      #  ansible.builtin.debug:
-      #      msg: "{{ connection_out }}"
+      - name: "Consolidando Resultado"
+        ansible.builtin.template:
+          src: switch.j2
+          dest: "/tmp/teste-yaml/conncect-{{inventory_hostname}}.csv"
+        register: rc02
+
+      - name: "Resultado telnet"
+        ansible.builtin.debug:
+            msg: "{{ rc02 }}"
+
+            
       #  with_items: "{{ connection_out.results }}"  
       #  when: "{{ connection_out.stdout == 'root'}}"
             #  - "{{ connection_out2 }}"
