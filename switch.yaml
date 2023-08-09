@@ -1,9 +1,9 @@
 ---
 - name: "Teste de comandos shell"
   hosts: "{{groups['srv01']}}"
-  gather_facts: no
+  #gather_facts: no
   vars:
-    varport: "{{hosts['port01'] | list }}"
+    varport: "{{groups['port01'] | list }}"
   
   tasks:
   
