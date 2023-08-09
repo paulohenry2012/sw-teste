@@ -3,7 +3,7 @@
   hosts: "{{groups['srv01']}}"
   gather_facts: no
   vars:
-    acesso: {{groups['host01']}}
+    acesso: "{{groups[host01]}}"
   
   tasks:
   
