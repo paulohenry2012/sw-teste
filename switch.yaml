@@ -3,20 +3,20 @@
   hosts: "{{groups['srv01']}}"
   gather_facts: no
   vars:
-    varport: "{{groups['port01'] | list }}"
+    nodes: "{{groups['host01']}}"
   
   tasks:
   
       - name: "Teste de acesso"
         ansible.builtin.shell: |
           set timeout -1
-          spawn ssh root@rhel-02
+          spawn ssh root@{{ nodes }}
           sleep 5
           send -- "VMware1!\r"
 
           sleep 2
           
-          send -- "curl localhost:$varport\r"
+          send -- "curl localhost:{{ item }}\r"
 
           sleep 2
          
