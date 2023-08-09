@@ -3,7 +3,7 @@
   hosts: "{{groups['srv01']}}"
   gather_facts: no
   vars:
-    acesso: 
+    varport: "{{groups['port01']}}"
   
   tasks:
   
@@ -16,7 +16,7 @@
 
           sleep 2
           
-          send -- "curl localhost:{{ item.0 }}\r"
+          send -- "curl localhost:{{ varport }}\r"
 
           sleep 2
          
@@ -27,7 +27,6 @@
         args:
           executable: /usr/bin/expect
         with_items: "{{groups['port01']}}"
-        
         #delegate_to: localhost
         loop: "{{groups['host01']}}"
         register: connection_out
