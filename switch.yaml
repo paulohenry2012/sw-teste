@@ -25,7 +25,7 @@
         args:
           executable: /usr/bin/expect
         with_items:
-          - "{ acesso: "{{groups['host01']}}", varport: "{{groups['port01']}}" }" 
+          - { acesso: "{{groups['host01']}}", varport: "{{groups['port01']}}" }
         
         #delegate_to: localhost
         loop: "{{groups['port01']}}" 
