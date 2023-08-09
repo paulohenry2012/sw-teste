@@ -16,7 +16,7 @@
 
           sleep 2
           
-          send -- "curl localhost:{{ varport }}\r"
+          send -- "curl localhost:{{ item }}\r"
 
           sleep 2
          
