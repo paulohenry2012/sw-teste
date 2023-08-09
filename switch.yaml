@@ -3,14 +3,14 @@
   hosts: "{{groups['srv01']}}"
   gather_facts: no
   vars:
-    acesso: "{{'groups[host01]'}}"
+    acesso: 
   
   tasks:
   
-      - name: Teste de acesso
+      - name: "Teste de acesso"
         ansible.builtin.shell: |
           set timeout -1
-          spawn ssh root@{{ acesso }}
+          spawn ssh root@{{ item }}
           sleep 5
           send -- "VMware1!\r"
 
@@ -30,7 +30,7 @@
           - varport: "{{groups['port01']}}"
         
         #delegate_to: localhost
-        #loop: "{{groups['port01']}}" 
+        loop: "{{groups[host01]}}"
         register: connection_out
         #run_once: true
 
