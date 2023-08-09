@@ -2,8 +2,8 @@
 - name: "Teste de comandos shell"
   hosts: "{{groups['srv01']}}"
   gather_facts: no
-  vars:
-    varport: "{{groups['port01']}}"
+  #vars:
+  #  varport: "{{groups['port01']}}"
   
   tasks:
   
@@ -27,7 +27,7 @@
         args:
           executable: /usr/bin/expect
         with_items: 
-          - varport: {{groups['port01']}}
+          - varport: "{{groups['port01']}}"
         #delegate_to: localhost
         loop: "{{groups['host01']}}"
         register: connection_out
