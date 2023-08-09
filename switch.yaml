@@ -3,7 +3,7 @@
   hosts: "{{groups['srv01']}}"
   gather_facts: no
   vars:
-    varport: "{{groups['port01']}}"
+    varport: '{{ ansible_limit | default(port01) }}'
   
   tasks:
   
@@ -28,7 +28,7 @@
           executable: /usr/bin/expect
         #with_items: 
          # - varport: "{{groups['port01']}}"
-        delegate_to: localhost
+        #delegate_to: localhost
         loop: "{{groups['host01']}}"
         register: connection_out
         #run_once: true
