@@ -10,7 +10,7 @@
       - name: "Teste de acesso"
         ansible.builtin.shell: |
           set timeout -1
-          spawn ssh root@{{ item }}
+          spawn ssh root@rhel-02
           sleep 5
           send -- "VMware1!\r"
 
@@ -29,7 +29,7 @@
         #with_items: 
          # - varport: "{{groups['port01']}}"
         #delegate_to: localhost
-        loop: "{{groups['host01']}}"
+        loop: "{{groups['port01']}}"
         register: connection_out
         #run_once: true
 
