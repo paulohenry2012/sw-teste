@@ -16,7 +16,7 @@
 
           sleep 2
           
-          send -- "curl localhost:{{ item.varport }}\r"
+          send -- "curl localhost:{{ item.0 }}\r"
 
           sleep 2
          
@@ -26,8 +26,7 @@
 
         args:
           executable: /usr/bin/expect
-        with_items:  
-          - varport: "{{groups['port01']}}"
+        with_items: "{{groups['port01']}}"
         
         #delegate_to: localhost
         loop: "{{groups['host01']}}"
