@@ -28,7 +28,7 @@
           executable: /usr/bin/expect
         #with_items: 
          # - varport: "{{groups['port01']}}"
-        delegate_to: "{{groups['srv01']}}"
+        delegate_to: localhost
         loop: "{{groups['host01']}}"
         register: connection_out
         #run_once: true
