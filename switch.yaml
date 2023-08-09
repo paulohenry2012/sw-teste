@@ -8,13 +8,13 @@
       - name: Teste de acesso
         ansible.builtin.shell: |
           set timeout -1
-          spawn ssh root@{{ host01 }}
+          spawn ssh root@{{ item.acesso }}
           sleep 5
           send -- "VMware1!\r"
 
           sleep 2
           
-          send -- "curl localhost:{{ item }}\r"
+          send -- "curl localhost:{{ item.varport }}\r"
 
           sleep 2
          
@@ -24,11 +24,10 @@
 
         args:
           executable: /usr/bin/expect
-        #with_items:
-         # - { acesso: "{{groups['host01']}}", varport: "{{groups['port01']}}" }
+        with_items: { acesso: "{{groups['host01']}}", varport: "{{groups['port01']}}" }
         
         #delegate_to: localhost
-        loop: "{{groups['port01']}}" 
+        #loop: "{{groups['port01']}}" 
         register: connection_out
         #run_once: true
 
