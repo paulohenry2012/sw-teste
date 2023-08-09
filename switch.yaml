@@ -3,7 +3,7 @@
   hosts: "{{groups['srv01']}}"
   gather_facts: no
   vars:
-    varport: '{{ ansible_limit | default(port01) }}'
+    varport: "{{groups['port01']} | list }"
   
   tasks:
   
