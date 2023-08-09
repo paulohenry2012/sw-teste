@@ -3,7 +3,7 @@
   hosts: "{{groups['srv01']}}"
   gather_facts: no
   vars:
-    varport: "{{groups['port01'] | list }}"
+    varport: "{{inventory_hostname['port01'] | list }}"
   
   tasks:
   
