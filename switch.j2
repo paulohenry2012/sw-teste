@@ -3,7 +3,6 @@ string RC: "{{ pr.stdout | regex_search('teste.*', multiline=True) | regex_repla
 
 {{ pr.item }};{{regex_replace( $RC, @"\s", "") }}
 
-@"\s", ""
 {{ pr.item }};{{ pr.stdout | regex_search('teste.*', multiline=True) | regex_replace('/( )+/', ' ') }};
 {{ pr.stdout | regex_search(".*recusada.*", multiline=True) }}
 {% endfor %}
