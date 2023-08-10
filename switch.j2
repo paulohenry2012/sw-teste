@@ -1,7 +1,7 @@
 {% for pr in connection_out.results %}
-string RC: "{{ pr.stdout | regex_search('teste.*', multiline=True) | regex_replace('/( )+/', ' ') }}"
 
-{{ pr.item }};{{regex_replace( RC, @"\s", "") }}
+
+{{ pr.item }};{{regex_replace( {{ pr.stdout | regex_search('teste.*', multiline=True) }}, @"\s", "") }}
 
 {{ pr.item }};{{ pr.stdout | regex_search('teste.*', multiline=True) | regex_replace('/( )+/', ' ') }};
 {{ pr.stdout | regex_search(".*recusada.*", multiline=True) }}
