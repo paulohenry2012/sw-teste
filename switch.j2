@@ -1,5 +1,5 @@
 {% for pr in connection_out.results %}
-{{ pr.item }};{{ pr.stdout | regex_search('teste.*', multiline=True) | regex_replace(@"\s", "") }}
+{{ pr.item }};{{ pr.stdout | regex_search('teste.*', multiline=True) | regex_replace("\s", "") }}
 
 
 
