@@ -2,9 +2,5 @@
 {{ pr.item }};{{ pr.stdout | regex_search('teste.*', multiline=True) | regex_replace("\s", "") }}
 
 
-
-{{ pr.item }};{{ pr.stdout | regex_search('teste.*', multiline=True) | regex_replace('/( )+/', ' ') }};
-
-
 {{ pr.stdout | regex_search(".*recusada.*", multiline=True) }}
 {% endfor %}
